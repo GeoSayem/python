@@ -180,7 +180,87 @@
     </div>
   </section>
  
- <section id="games">
+
+
+  <section id="projects">
+    <div class="card">
+      <h2>Tic Tac Toe Game (Python)</h2>
+      <p>
+        This is a simple console-based Tic Tac Toe game written in Python. It demonstrates
+        game logic, functions, loops, and condition checking.
+      </p>
+      <div style="position:relative;">
+      <button onclick="copyCode()" style="position:absolute; top:10px; right:10px; padding:6px 12px; border:none; border-radius:6px; background:#00e0ff; color:#000; cursor:pointer; font-size:0.85rem;">Copy</button>
+      <pre id="codeBlock" style="background:#0b1d26; padding:20px; border-radius:10px; overflow-x:auto;">
+<code># Tic Tac Toe Game in Python
+# Author: Sayem Ansari
+
+board = [' ' for _ in range(9)]
+
+def print_board():
+    print()
+    print(board[0], '|', board[1], '|', board[2])
+    print('--+---+--')
+    print(board[3], '|', board[4], '|', board[5])
+    print('--+---+--')
+    print(board[6], '|', board[7], '|', board[8])
+    print()
+
+def check_win(player):
+    wins = [
+        (0,1,2), (3,4,5), (6,7,8),
+        (0,3,6), (1,4,7), (2,5,8),
+        (0,4,8), (2,4,6)
+    ]
+    for a, b, c in wins:
+        if board[a] == board[b] == board[c] == player:
+            return True
+    return False
+
+def play_game():
+    current_player = 'X'
+    turns = 0
+
+    while turns < 9:
+        print_board()
+        try:
+            move = int(input(f"Player {current_player}, choose position (1-9): ")) - 1
+        except ValueError:
+            print("❌ Please enter a number between 1 and 9.")
+            continue
+
+        if move < 0 or move > 8:
+            print("❌ Invalid position. Choose 1-9.")
+            continue
+
+        if board[move] != ' ':
+            print("❌ Position already taken.")
+            continue
+
+        board[move] = current_player
+        turns += 1
+
+        if check_win(current_player):
+            print_board()
+            print(f"🎉 Player {current_player} wins!")
+            return
+
+        current_player = 'O' if current_player == 'X' else 'X'
+
+    print_board()
+    print("🤝 It's a draw!")
+
+play_game()
+</code>
+      </pre>
+    </div>
+      <p style="margin-top:10px; font-size:0.9rem; opacity:0.8;">
+        Note: This game is shit don't play it.
+      </p>
+    </div>
+  </section>
+
+<section id="games">
   <div class="card">
     <h2>🎮 Games</h2> 
   <!-- ADVANCED TIC TAC TOE -->
@@ -322,86 +402,9 @@
 
   restartGame();
 </script>
-
-
-  <section id="projects">
-    <div class="card">
-      <h2>Tic Tac Toe Game (Python)</h2>
-      <p>
-        This is a simple console-based Tic Tac Toe game written in Python. It demonstrates
-        game logic, functions, loops, and condition checking.
-      </p>
-      <div style="position:relative;">
-      <button onclick="copyCode()" style="position:absolute; top:10px; right:10px; padding:6px 12px; border:none; border-radius:6px; background:#00e0ff; color:#000; cursor:pointer; font-size:0.85rem;">Copy</button>
-      <pre id="codeBlock" style="background:#0b1d26; padding:20px; border-radius:10px; overflow-x:auto;">
-<code># Tic Tac Toe Game in Python
-# Author: Sayem Ansari
-
-board = [' ' for _ in range(9)]
-
-def print_board():
-    print()
-    print(board[0], '|', board[1], '|', board[2])
-    print('--+---+--')
-    print(board[3], '|', board[4], '|', board[5])
-    print('--+---+--')
-    print(board[6], '|', board[7], '|', board[8])
-    print()
-
-def check_win(player):
-    wins = [
-        (0,1,2), (3,4,5), (6,7,8),
-        (0,3,6), (1,4,7), (2,5,8),
-        (0,4,8), (2,4,6)
-    ]
-    for a, b, c in wins:
-        if board[a] == board[b] == board[c] == player:
-            return True
-    return False
-
-def play_game():
-    current_player = 'X'
-    turns = 0
-
-    while turns < 9:
-        print_board()
-        try:
-            move = int(input(f"Player {current_player}, choose position (1-9): ")) - 1
-        except ValueError:
-            print("❌ Please enter a number between 1 and 9.")
-            continue
-
-        if move < 0 or move > 8:
-            print("❌ Invalid position. Choose 1-9.")
-            continue
-
-        if board[move] != ' ':
-            print("❌ Position already taken.")
-            continue
-
-        board[move] = current_player
-        turns += 1
-
-        if check_win(current_player):
-            print_board()
-            print(f"🎉 Player {current_player} wins!")
-            return
-
-        current_player = 'O' if current_player == 'X' else 'X'
-
-    print_board()
-    print("🤝 It's a draw!")
-
-play_game()
-</code>
-      </pre>
-    </div>
-      <p style="margin-top:10px; font-size:0.9rem; opacity:0.8;">
-        Note: This game is shit don't play it.
-      </p>
+</div>
     </div>
   </section>
-
   <section id="posts">
     <div class="card">
       <h2>Posts</h2>
